@@ -14,8 +14,7 @@ import com.socketservice.socketservice.Models.Message;
 import com.socketservice.socketservice.Models.Room;
 
 
-
-@FeignClient(url = "http://localhost:7070", value="backend-client")
+@FeignClient(url = "${backend_service_url}", value="backend-client")
 public interface Backend {
 
     @GetMapping("/api/auth/getrooms/{loggedUserId}")
