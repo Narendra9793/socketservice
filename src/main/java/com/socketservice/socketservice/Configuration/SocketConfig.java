@@ -12,15 +12,15 @@ public class SocketConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(SocketConfig.class);
 
-    @Value("${socket.host}")
-    private String host;
+    // @Value("${socket.host}")
+    // private String host;
 
     @Value("${socket.port}")
     private int port;
 
     @Bean
     public SocketIOServer socketIOServer() {
-        logger.info("Initializing SocketIOServer with host: {} and port: {}", host, port);
+        // logger.info("Initializing SocketIOServer with host: {} and port: {}", host, port);
         
         com.corundumstudio.socketio.Configuration config = new com.corundumstudio.socketio.Configuration();
         // config.setHostname(host);
