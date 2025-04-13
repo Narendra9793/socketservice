@@ -23,7 +23,7 @@ public class SocketConfig {
         logger.info("Initializing SocketIOServer with host: {} and port: {}", host, port);
         
         com.corundumstudio.socketio.Configuration config = new com.corundumstudio.socketio.Configuration();
-        config.setHostname(host);
+        // config.setHostname(host);
         config.setPort(port);
         config.setWorkerThreads(100); // Customize based on your needs
         config.setBossThreads(10);
