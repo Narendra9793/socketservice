@@ -161,6 +161,14 @@ public class SocketHandler {
     printLog("onReady", client, room);
   }
 
+  @OnEvent("UserDisconnected")
+  public void onUserDisconnected(SocketIOClient client, JoinRoomData jrd) {
+    String sender=jrd.getSender();
+    String reciever=jrd.getReceiver();
+    Room room= backend.getRoomsBySenderReceiver(Integer. parseInt(sender), Integer. parseInt(reciever));
+    client.getNamespace().getRoomOperations(room.getRoomKey()).sendEvent("userDisconnected");
+  }
+
   @OnEvent("candidate")
   public void onCandidate(SocketIOClient client, Map<String, Object> payload) {
     String room = (String) payload.get("room");
