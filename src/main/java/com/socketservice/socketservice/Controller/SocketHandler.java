@@ -170,7 +170,7 @@ public class SocketHandler {
     Set<SocketIOClient> clients = (Set<SocketIOClient>) server.getRoomOperations(room.getRoomKey()).getClients();
 
     for (SocketIOClient c : clients) {
-      if (c != client)client.sendEvent("EndedCall");
+      if (c != client)c.sendEvent("EndedCall");
     }
      client.sendEvent("YouEndedCall");
   }
