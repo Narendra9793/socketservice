@@ -166,7 +166,13 @@ public class SocketHandler {
     String sender=jrd.getSender();
     String reciever=jrd.getReceiver();
     Room room= backend.getRoomsBySenderReceiver(Integer. parseInt(sender), Integer. parseInt(reciever));
-    client.getNamespace().getRoomOperations(room.getRoomKey()).sendEvent("userDisconnected");
+    
+    Set<SocketIOClient> clients = (Set<SocketIOClient>) server.getRoomOperations(room.getRoomKey()).getClients();
+
+    for (SocketIOClient c : clients) {
+      if (c == client)client.sendEvent("YouEndedCall");
+      else client.sendEvent("EndedCall");
+    }
   }
 
   @OnEvent("candidate")
